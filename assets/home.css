@@ -1,0 +1,20 @@
+*{
+  margin:0;
+  color:orange;
+  font-family: 'Nunito', sans-serif;
+}
+body{
+  background-color: rgb(252, 242, 225);
+}
+.main h1{
+  margin:20px;
+}
+.main p{
+  display:flex;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+.main ul{
+  list-style: none;
+  margin:20px;
+}

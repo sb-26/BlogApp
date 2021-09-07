@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <style>
+    *{
+      margin:0;
+    }
+    body{
+      background-color: rgb(252, 242, 225);
+    }
+    .post h1,p{
+      margin:20px;
+    }
+
+  </style>
+</head>
+<body>
+  <%- include('header'); -%>
+  <div class='post'>
+    <% for(var i of posts) {%>
+      <% if(i.postTitle===title) { %>
+        <h1><%= i.postTitle %></h1>
+        <p><%= i.postBody %></p>
+      <% } %>
+    <% } %>
+  </div>
+</body>
+</html>

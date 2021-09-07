@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Compose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      color:orange;
+      font-family: 'Nunito', sans-serif;
+    }
+    body{
+      background-color: rgb(252, 242, 225);
+    }
+    .post-box h1{
+      margin:20px;
+    }
+    .post-box input,textarea,button{
+      display: block;
+      border-radius: 5px;
+      background-color: #EEE9E4;
+      outline: none;
+      border: 1px solid rgb(250, 213, 144);
+      margin: 20px;
+      padding: 10px;
+    }
+    .post -box textarea{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .post-box button{
+      font-size: 1.2rem;
+      transition: background 1s;
+    }
+    .post-box button:hover{
+      background:grey;
+    }
+  </style>
+</head>
+<body>
+  <%- include('header'); -%>
+  <div class="post-box">
+    <h1>Compose</h1>
+    <form action="/compose" method="POST">
+      <input type="text" name='postTitle' placeholder="Title" required>
+      <textarea name="postBody" rows="8" cols="150" placeholder="body" required></textarea>
+      <button type="submit">Post</button>
+    </form>
+  </div>
+</body>
+</html>

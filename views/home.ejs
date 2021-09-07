@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+  
+  <%- include('header'); -%>
+
+  <div class="main">
+    <h1>Home</h1>
+
+    <p><%= homeContent %></p>
+
+
+    <% for(var i of posts) { %>
+      <ul>
+        <li><h3><%= i.postTitle %></h3></li>
+        <li><p><%=  i.postBody.substring(0,100)+'...' %><a href="/posts/<%= i.postTitle %>">read more</a></p></li>
+      </ul>
+    <% } %>
+
+  </div>
+
+
+  <script src="/home.js"></script>
+</body>
+</html>
