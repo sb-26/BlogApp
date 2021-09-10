@@ -18,7 +18,7 @@
 <body>
   <%- include('header'); -%>
   <div class='post'>
-    <% for(var i of posts) {%>
+    <% for(var i of post_lists) {%>
       <% if(i.postTitle===title) { %>
         <h1><%= i.postTitle %></h1>
         <p><%= i.postBody %></p>

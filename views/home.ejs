@@ -17,13 +17,13 @@
     <p><%= homeContent %></p>
 
 
-    <% for(var i of posts) { %>
+    <% for(var i of post_lists) { %>
       <ul>
         <li><h3><%= i.postTitle %></h3></li>
         <li><p><%=  i.postBody.substring(0,100)+'...' %><a href="/posts/<%= i.postTitle %>">read more</a></p></li>
       </ul>
+      <hr>
     <% } %>
-
   </div>
 
 

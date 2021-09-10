@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { url } = require('inspector');
+const db = require('./config/mongoose.js');
+const Post = require('./models/post.js');
 
 
 const homeContent = "A blog site where u can write blog";
 
-var posts=[
+var post_lists=[
 
 ];
 
@@ -18,13 +19,19 @@ app.use(express.urlencoded());
 app.use(express.static('assets'));
 
 app.get('/',function(req,res){
-  res.render('./views/home',
-  {
-    title:'Blog App',
-    homeContent: homeContent,
-    posts:posts,
-  }
-  );
+
+  Post.find({},function(err,posts){
+    res.render('./views/home',
+      {
+        title:'Blog App',
+        homeContent: homeContent,
+        post_lists:posts,
+      }
+    );
+  });
+  
+
+  
 });
 
 
@@ -42,20 +49,26 @@ app.get('/compose',function(req,res){
 
 
 app.post('/compose',function(req,res){
-  posts.push({
+  Post.create({
     postTitle:req.body.postTitle,
     postBody:req.body.postBody
-  })
-  res.redirect('back');
+  },
+  function(err,newPost){
+    console.log(newPost.postTitle+" "+newPost.postBody);
+    res.redirect('back');
+  });
+  
 });
 
 
 app.get('/posts/:postName',function(req,res){
   const url = req.params.postName;
-  res.render('./views/blog',{
-    title:url,
-    posts:posts,
-  })
+  Post.find({},function(err,posts){
+    res.render('./views/blog',{
+      title:url,
+      post_lists:posts,
+    });
+  });
 });
 
 
